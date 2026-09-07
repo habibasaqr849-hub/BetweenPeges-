@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Settings | Between Pages{% endblock %}
+{% block content %}
+<section class="page-heading"><p class="eyebrow">YOUR SETTINGS</p><h1>Make Between Pages yours.</h1><p>Your shelves and favorites are stored in this browser. No account is required.</p></section>
+<section class="discover-box settings-box">
+    <h2>Reading preferences</h2>
+    <div class="setting-row"><div><h3>Dark mode</h3><p>Give the reading room a quieter, lower-light atmosphere.</p></div>
+    <label class="form-check form-switch fs-3" for="dark-mode-toggle"><input class="form-check-input" type="checkbox" role="switch" id="dark-mode-toggle"><span class="visually-hidden">Enable dark mode</span></label></div>
+    <hr>
+    <h3>About your data</h3><p>Between Pages stores your shelves and favorites in this browser. Clearing browser data may remove them.</p>
+    <a class="btn btn-outline-dark" href="{{ url_for('home') }}">Return Home</a>
+</section>
+{% endblock %}

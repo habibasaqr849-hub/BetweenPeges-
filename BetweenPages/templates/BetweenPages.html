@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Between Pages | Find your next story{% endblock %}
+{% block content %}
+<section class="hero">
+    <p class="eyebrow">A READING COMPANION FOR THE IN-BETWEEN</p>
+    <h1>Choose the feeling.<br><em>Find the story.</em></h1>
+    <p class="hero-text">Between Pages helps you move from “What should I read?” to “What kind of story am I looking for right now?”</p>
+    <div class="hero-buttons">
+        <a class="btn btn-primary" href="{{ url_for('search', mode='search') }}">Begin exploring <i class="bi bi-arrow-right"></i></a>
+        <a class="btn btn-outline-dark" href="{{ url_for('search', mode='alternative') }}">Find alternatives <i class="bi bi-stars"></i></a>
+    </div>
+</section>
+
+<section class="home-section">
+    <p class="eyebrow text-center">TWO WAYS IN</p>
+    <h2>Let curiosity set the direction.</h2>
+    <div class="feature-grid">
+        <article class="feature-card"><div class="feature-icon"><i class="bi bi-search"></i></div><p class="eyebrow">01 · THE CATALOG</p><h3>Search with intention.</h3><p>Find the book you know—or start with an author, theme, genre, or subject already on your mind.</p><a href="{{ url_for('search', mode='search') }}">Search the shelves <i class="bi bi-arrow-right"></i></a></article>
+        <article class="feature-card"><div class="feature-icon"><i class="bi bi-stars"></i></div><p class="eyebrow">02 · THE OTHER THREAD</p><h3>Follow a different thread.</h3><p>Find alternatives that share a feeling or reading experience—not just a series or bestseller list.</p><a href="{{ url_for('search', mode='alternative') }}">Find alternatives <i class="bi bi-arrow-right"></i></a></article>
+    </div>
+</section>
+
+<section class="home-section between-section">
+    <div class="row align-items-center g-5">
+        <div class="col-lg-6"><div class="between-pages-art" aria-hidden="true"><span class="art-page art-page-back"></span><span class="art-page art-page-front"></span><span class="art-bookmark"></span></div></div>
+        <div class="col-lg-6"><p class="eyebrow">THE BETWEEN PAGES PROMISE</p><h2>More than a catalog.<br>A way into the unknown.</h2><p>Save what catches you. Make a shelf for the mood you are in. Come back when you are ready for the next thread.</p><div class="d-flex flex-wrap gap-3 mt-4"><a class="btn btn-primary" href="{{ url_for('shelves') }}">See my shelves <i class="bi bi-arrow-right"></i></a><a class="btn btn-outline-dark" href="{{ url_for('favorites') }}">View favorites <i class="bi bi-heart"></i></a></div></div>
+    </div>
+</section>
+{% endblock %}

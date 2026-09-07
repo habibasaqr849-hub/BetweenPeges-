@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+
+{% block title %}Book Buddy | Between Pages{% endblock %}
+
+{% block content %}
+
+<section class="buddy-page">
+
+    <!-- HEADER -->
+    <div class="buddy-header">
+
+        <div class="buddy-icon">🤖</div>
+
+        <p class="eyebrow">YOUR READING COMPANION</p>
+
+        <h1>Meet Book Buddy.</h1>
+
+        <p class="buddy-intro">
+            Go beyond the pages. Ask about the themes, characters,
+            lessons, and ideas behind the books you read.
+        </p>
+
+    </div>
+
+
+    <!-- CHAT CARD -->
+    <div class="chat-box">
+
+        {% if answer %}
+
+            <!-- ANSWER -->
+            <div class="buddy-answer">
+
+                <div class="buddy-answer-header">
+                    <span class="buddy-avatar">🤖</span>
+
+                    <div>
+                        <strong>Book Buddy</strong>
+                        <small>Your reading companion</small>
+                    </div>
+                </div>
+
+                {% for paragraph in answer.split('\n\n') %}
+                    <p>{{ paragraph }}</p>
+                {% endfor %}
+
+            </div>
+
+        {% else %}
+
+            <!-- WELCOME -->
+            <div class="buddy-welcome">
+
+                <span class="welcome-icon">📖</span>
+
+                <h2>What are you curious about?</h2>
+
+                <p>
+                    Ask me about a book you're reading,
+                    its characters, themes, or the lessons behind its story.
+                </p>
+
+            </div>
+
+        {% endif %}
+
+
+        <!-- QUESTION FORM -->
+        <form method="post" class="buddy-form">
+
+            <label for="question">
+                Ask Book Buddy
+            </label>
+
+            <div class="question-box">
+
+                <textarea
+                    id="question"
+                    name="question"
+                    rows="4"
+                    placeholder="e.g. What did this book teach us about friendship?"
+                    required>{{ question }}</textarea>
+
+                <button
+                    class="btn btn-primary buddy-submit"
+                    type="submit">
+                    Ask Book Buddy
+                    <i class="bi bi-arrow-right"></i>
+                </button>
+
+            </div>
+
+        </form>
+
+
+        <!-- EXAMPLES -->
+        <div class="question-examples">
+
+            <p>Try asking:</p>
+
+            <div class="example-list">
+
+                <span>💭 What is the main moral of this story?</span>
+
+                <span>🤝 What did this book teach us about friendship?</span>
+
+                <span>👤 Why did the main character make that choice?</span>
+
+                <span>✨ What can I learn from this story?</span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

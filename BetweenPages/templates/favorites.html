@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Favorites | Between Pages{% endblock %}
+{% block content %}
+<section class="page-heading"><p class="eyebrow">THE ONES THAT STAY</p><h1>Your favorites.</h1><p>Books you marked with a little more feeling.</p></section>
+<section class="results">
+    {% if books %}<div class="books-grid">{% for book in books %}<article class="book-card">{% if book.cover %}<img src="{{ book.cover }}" alt="{{ book.title }}">
+    {% else %}<div class="book-placeholder">📖</div>
+    {% endif %}<div class="book-info"><h3>{{ book.title }}</h3>
+    <p class="author">{{ book.author }}</p><form action="{{ url_for('favorite') }}" method="post"><input type="hidden" name="title" value="{{ book.title }}">
+    <input type="hidden" name="author" value="{{ book.author }}"><input type="hidden" name="cover" value="{{ book.cover or '' }}">
+    <button class="favorite-button" type="submit">♥ Remove Favorite</button></form></div></article>
+    {% endfor %}</div>{% else %}<div class="empty-state"><h2>Your favorites will appear here.</h2>
+    <p>Find a book in Discover and mark it with a heart.</p>
+    <a class="btn btn-primary" href="{{ url_for('search') }}">Go to Discover</a></div>
+    {% endif %}
+</section>
+{% endblock %}

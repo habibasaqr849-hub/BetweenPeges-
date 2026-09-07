@@ -1,0 +1,1243 @@
+/* =========================================================
+   GENERAL
+========================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Georgia, "Times New Roman", serif;
+    background: #f8f7f3;
+    color: #202020;
+    transition: background 0.3s, color 0.3s;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+main {
+    min-height: 80vh;
+}
+
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+.site-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 20px 6%;
+
+    border-bottom: 1px solid #ddd;
+
+    background: #ffffff;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.site-header nav {
+    display: flex;
+    gap: 25px;
+}
+
+.site-header nav a {
+    padding: 8px 4px;
+    transition: 0.2s;
+}
+
+.site-header nav a:hover {
+    color: #0345fc;
+}
+
+.site-header nav a.active {
+    color: #0345fc;
+    font-weight: bold;
+}
+
+.settings-button {
+    font-size: 22px;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+    text-align: center;
+
+    padding:
+        110px
+        20px
+        100px;
+}
+
+.eyebrow {
+    letter-spacing: 3px;
+    font-size: 13px;
+    font-weight: bold;
+    color: #0345fc;
+}
+
+.hero h1 {
+    font-size: clamp(45px, 7vw, 85px);
+    max-width: 900px;
+    margin: 20px auto;
+}
+
+.hero-text {
+    max-width: 600px;
+    margin: 0 auto 30px;
+
+    font-size: 20px;
+    line-height: 1.7;
+}
+
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.btn-primary {
+    background: #0345fc;
+    border-color: #0345fc;
+}
+
+.btn-primary:hover {
+    background: #0236c7;
+    border-color: #0236c7;
+}
+
+
+/* =========================================================
+   HOME
+========================================================= */
+
+.home-section {
+    padding: 60px 6%;
+}
+
+.home-section h2 {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.feature-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            3,
+            minmax(0, 1fr)
+        );
+
+    gap: 25px;
+}
+
+.feature-card {
+    background: white;
+
+    padding: 35px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 18px;
+
+    transition:
+        transform 0.2s,
+        box-shadow 0.2s;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 15px 40px
+        rgba(0, 0, 0, 0.08);
+}
+
+.feature-icon {
+    font-size: 35px;
+}
+
+.feature-card h3 {
+    margin-top: 20px;
+}
+
+.feature-card p {
+    line-height: 1.7;
+    color: #666;
+}
+
+.feature-card a {
+    color: #0345fc;
+    font-weight: bold;
+}
+
+
+/* =========================================================
+   PAGE HEADING
+========================================================= */
+
+.page-heading {
+    text-align: center;
+
+    padding:
+        70px
+        20px
+        40px;
+}
+
+.page-heading h1 {
+    font-size: 50px;
+    margin: 15px 0;
+}
+
+.page-heading p:last-child {
+    color: #666;
+    font-size: 18px;
+}
+
+
+/* =========================================================
+   DISCOVER
+========================================================= */
+
+.discover-tabs {
+    display: flex;
+    justify-content: center;
+
+    gap: 10px;
+
+    margin-bottom: 30px;
+}
+
+.discover-tabs a {
+    padding: 12px 20px;
+
+    border: 1px solid #ccc;
+
+    border-radius: 30px;
+
+    background: white;
+}
+
+.discover-tabs a.selected {
+    background: #0345fc;
+    color: white;
+    border-color: #0345fc;
+}
+
+.discover-box {
+    max-width: 750px;
+
+    margin:
+        0 auto;
+
+    padding: 40px;
+
+    background: white;
+
+    border:
+        1px solid #ddd;
+
+    border-radius: 20px;
+}
+
+.discover-box h2 {
+    margin-bottom: 10px;
+}
+
+.discover-box p {
+    color: #666;
+}
+
+.discover-box form {
+    display: flex;
+    flex-direction: column;
+
+    gap: 10px;
+
+    margin-top: 25px;
+}
+
+.discover-box label {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.discover-box label span {
+    font-weight: normal;
+    color: #888;
+}
+
+.discover-box input,
+.discover-box textarea {
+    width: 100%;
+
+    padding: 14px;
+
+    border:
+        1px solid #ccc;
+
+    border-radius: 10px;
+
+    font-family: inherit;
+}
+
+.discover-box textarea {
+    resize: vertical;
+}
+
+
+/* =========================================================
+   RESULTS
+========================================================= */
+
+.results {
+    padding: 70px 6%;
+}
+
+.results > h2 {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.books-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(220px, 1fr)
+        );
+
+    gap: 25px;
+}
+
+.book-card {
+    background: white;
+
+    border:
+        1px solid #ddd;
+
+    border-radius: 16px;
+
+    overflow: hidden;
+
+    transition:
+        transform 0.2s,
+        box-shadow 0.2s;
+}
+
+.book-card:hover {
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 12px 30px
+        rgba(0, 0, 0, 0.08);
+}
+
+.book-card > img,
+.book-placeholder {
+    width: 100%;
+    height: 280px;
+
+    object-fit: cover;
+}
+
+.book-placeholder {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background: #e9e7df;
+
+    font-size: 60px;
+}
+
+.book-info {
+    padding: 20px;
+}
+
+.book-info h3 {
+    font-size: 21px;
+    margin-bottom: 8px;
+}
+
+.author {
+    color: #666;
+}
+
+.reason {
+    font-size: 14px;
+    line-height: 1.6;
+
+    padding:
+        10px;
+
+    background: #f4f4f4;
+
+    border-radius: 8px;
+}
+
+.favorite-form {
+    margin-top: 10px;
+}
+
+.favorite-button {
+    width: 100%;
+
+    padding: 9px;
+
+    border:
+        1px solid #ddd;
+
+    background: white;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+}
+
+.favorite-button:hover {
+    border-color: #dc3545;
+    color: #dc3545;
+}
+
+
+/* =========================================================
+   SHELVES
+========================================================= */
+
+.shelves {
+    padding:
+        20px 6%
+        80px;
+}
+
+.shelf-section {
+    margin-bottom: 60px;
+}
+
+.shelf-section h2 {
+    margin-bottom: 25px;
+}
+
+
+/* =========================================================
+   EMPTY STATE
+========================================================= */
+
+.empty-state {
+    text-align: center;
+
+    padding: 100px 20px;
+}
+
+.empty-state div {
+    font-size: 60px;
+}
+
+.empty-state h2 {
+    margin: 20px 0 10px;
+}
+
+
+/* =========================================================
+   BOOK BUDDY
+========================================================= */
+
+.buddy-page {
+    max-width: 850px;
+
+    margin: 0 auto;
+
+    padding:
+        70px 20px;
+}
+
+.buddy-header {
+    text-align: center;
+}
+
+.buddy-icon {
+    font-size: 70px;
+}
+
+.buddy-header h1 {
+    font-size: 55px;
+}
+
+.chat-box {
+    margin-top: 45px;
+
+    padding: 30px;
+
+    background: white;
+
+    border:
+        1px solid #ddd;
+
+    border-radius: 20px;
+}
+
+.chat-box textarea {
+    width: 100%;
+
+    padding: 15px;
+
+    border:
+        1px solid #ccc;
+
+    border-radius: 12px;
+
+    resize: vertical;
+}
+
+.buddy-answer {
+    padding: 20px;
+
+    margin-bottom: 25px;
+
+    background: #f0f4ff;
+
+    border-radius: 14px;
+}
+
+.buddy-answer p {
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   SETTINGS
+========================================================= */
+
+.settings-card {
+    max-width: 850px;
+
+    margin: 0 auto;
+
+    background: white;
+
+    border:
+        1px solid #ddd;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+}
+
+.setting-row {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 30px;
+
+    padding: 30px;
+
+    border-bottom:
+        1px solid #ddd;
+}
+
+.setting-row:last-child {
+    border-bottom: none;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer {
+    text-align: center;
+
+    padding: 40px 20px;
+
+    color: #777;
+
+    border-top:
+        1px solid #ddd;
+}
+
+
+/* =========================================================
+   DARK MODE
+========================================================= */
+
+body.dark-mode {
+    background: #121212;
+    color: #eeeeee;
+}
+
+
+/* ---------- NAVBAR ---------- */
+
+body.dark-mode .site-header {
+    background: #1b1b1b;
+    border-color: #333;
+}
+
+body.dark-mode .site-header nav a {
+    color: #eeeeee;
+}
+
+body.dark-mode .site-header nav a:hover,
+body.dark-mode .site-header nav a.active {
+    color: #5d7dff;
+}
+
+
+/* ---------- MAIN CARDS ---------- */
+
+body.dark-mode .feature-card,
+body.dark-mode .discover-box,
+body.dark-mode .book-card,
+body.dark-mode .chat-box,
+body.dark-mode .settings-card {
+    background: #1d1d1d;
+    border-color: #333;
+}
+
+
+/* ---------- TEXT ---------- */
+
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4,
+body.dark-mode h5,
+body.dark-mode h6 {
+    color: #f2f2f2;
+}
+
+body.dark-mode p {
+    color: #eeeeee;
+}
+
+body.dark-mode .feature-card p,
+body.dark-mode .discover-box p,
+body.dark-mode .page-heading p:last-child,
+body.dark-mode .author {
+    color: #b8b8b8;
+}
+
+body.dark-mode .discover-box label {
+    color: #eeeeee;
+}
+
+body.dark-mode .discover-box label span {
+    color: #a8a8a8;
+}
+
+
+/* ---------- HERO ---------- */
+
+body.dark-mode .eyebrow {
+    color: #6d88ff;
+}
+
+
+/* ---------- DISCOVER TABS ---------- */
+
+body.dark-mode .discover-tabs a {
+    background: #1d1d1d;
+    color: #eeeeee;
+    border-color: #444;
+}
+
+body.dark-mode .discover-tabs a:hover {
+    border-color: #5d7dff;
+}
+
+body.dark-mode .discover-tabs a.selected {
+    background: #0345fc;
+    color: white;
+    border-color: #0345fc;
+}
+
+
+/* ---------- INPUTS ---------- */
+
+body.dark-mode .discover-box input,
+body.dark-mode .discover-box textarea,
+body.dark-mode .chat-box textarea,
+body.dark-mode input,
+body.dark-mode textarea,
+body.dark-mode select {
+    background: #252525;
+    color: #eeeeee;
+    border-color: #444;
+}
+
+body.dark-mode .discover-box input::placeholder,
+body.dark-mode .discover-box textarea::placeholder,
+body.dark-mode .chat-box textarea::placeholder,
+body.dark-mode input::placeholder,
+body.dark-mode textarea::placeholder {
+    color: #999999;
+}
+
+body.dark-mode select option {
+    background: #252525;
+    color: #eeeeee;
+}
+
+
+/* ---------- BOOK CARDS ---------- */
+
+body.dark-mode .book-info h3 {
+    color: #f2f2f2;
+}
+
+body.dark-mode .book-placeholder {
+    background: #292929;
+    color: #eeeeee;
+}
+
+body.dark-mode .reason {
+    background: #292929;
+    color: #eeeeee;
+}
+
+body.dark-mode .reason p {
+    color: #eeeeee;
+}
+
+
+/* ---------- FAVORITES ---------- */
+
+body.dark-mode .favorite-button {
+    background: #1d1d1d;
+    color: #eeeeee;
+    border-color: #444;
+}
+
+body.dark-mode .favorite-button:hover {
+    border-color: #ff6b7a;
+    color: #ff6b7a;
+}
+
+body.dark-mode .favorite-button.is-favorite {
+    background: #2a1d20;
+    border-color: #ff6b7a;
+    color: #ff7d8a;
+}
+
+
+/* =========================================================
+   BOOK BUDDY — NEW FRONTEND
+========================================================= */
+
+.buddy-page {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 80px 20px 100px;
+}
+
+
+/* ---------- HEADER ---------- */
+
+.buddy-header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 45px;
+}
+
+.buddy-icon {
+    width: 80px;
+    height: 80px;
+
+    margin: 0 auto 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #eef2ff;
+    border-radius: 24px;
+
+    font-size: 42px;
+}
+
+.buddy-header h1 {
+    font-size: 58px;
+    margin: 15px 0;
+}
+
+.buddy-intro {
+    max-width: 620px;
+    margin: 0 auto;
+
+    color: #666;
+
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+
+/* ---------- CHAT CARD ---------- */
+
+.chat-box {
+    max-width: 850px;
+    margin: 0 auto;
+
+    padding: 40px;
+
+    background: #ffffff;
+
+    border: 1px solid #ddd;
+    border-radius: 24px;
+
+    box-shadow:
+        0 15px 45px rgba(0, 0, 0, 0.06);
+}
+
+
+/* ---------- WELCOME ---------- */
+
+.buddy-welcome {
+    text-align: center;
+
+    padding: 25px 20px 35px;
+
+    border-bottom: 1px solid #eee;
+
+    margin-bottom: 30px;
+}
+
+.welcome-icon {
+    font-size: 38px;
+}
+
+.buddy-welcome h2 {
+    margin: 15px 0 8px;
+
+    font-size: 28px;
+}
+
+.buddy-welcome p {
+    max-width: 550px;
+
+    margin: 0 auto;
+
+    color: #666;
+
+    line-height: 1.7;
+}
+
+
+/* ---------- ANSWER ---------- */
+
+.buddy-answer {
+    padding: 25px;
+
+    margin-bottom: 30px;
+
+    background: #f3f6ff;
+
+    border-radius: 18px;
+
+    border-left: 4px solid #0345fc;
+}
+
+.buddy-answer-header {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-bottom: 18px;
+}
+
+.buddy-avatar {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #ffffff;
+
+    border-radius: 50%;
+
+    font-size: 22px;
+}
+
+.buddy-answer-header strong {
+    display: block;
+}
+
+.buddy-answer-header small {
+    display: block;
+
+    margin-top: 3px;
+
+    color: #777;
+}
+
+.buddy-answer p {
+    margin: 0;
+
+    line-height: 1.8;
+}
+
+
+/* ---------- FORM ---------- */
+
+.buddy-form label {
+    display: block;
+
+    margin-bottom: 10px;
+
+    font-weight: bold;
+}
+
+.question-box {
+    position: relative;
+}
+
+.question-box textarea {
+    width: 100%;
+
+    padding: 18px 18px 70px;
+
+    border: 1px solid #ccc;
+
+    border-radius: 16px;
+
+    resize: vertical;
+
+    font-family: inherit;
+    font-size: 16px;
+
+    line-height: 1.6;
+
+    transition:
+        border-color 0.2s,
+        box-shadow 0.2s;
+}
+
+.question-box textarea:focus {
+    outline: none;
+
+    border-color: #0345fc;
+
+    box-shadow:
+        0 0 0 3px rgba(3, 69, 252, 0.1);
+}
+
+.buddy-submit {
+    position: absolute;
+
+    right: 12px;
+    bottom: 12px;
+
+    border-radius: 10px;
+
+    padding: 9px 16px;
+}
+
+
+/* ---------- EXAMPLES ---------- */
+
+.question-examples {
+    margin-top: 30px;
+}
+
+.question-examples > p {
+    margin-bottom: 12px;
+
+    font-size: 14px;
+
+    color: #777;
+
+    font-weight: bold;
+}
+
+.example-list {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+}
+
+.example-list span {
+    padding: 9px 13px;
+
+    background: #f6f6f4;
+
+    border: 1px solid #e5e5e5;
+
+    border-radius: 20px;
+
+    font-size: 13px;
+
+    color: #555;
+}
+
+
+/* =========================================================
+   BOOK BUDDY — DARK MODE
+========================================================= */
+
+body.dark-mode .buddy-icon {
+    background: #202b45;
+}
+
+body.dark-mode .buddy-intro {
+    color: #b8b8b8;
+}
+
+body.dark-mode .chat-box {
+    background: #1d1d1d;
+
+    border-color: #333;
+
+    box-shadow:
+        0 15px 45px rgba(0, 0, 0, 0.25);
+}
+
+body.dark-mode .buddy-welcome {
+    border-color: #333;
+}
+
+body.dark-mode .buddy-welcome p {
+    color: #b8b8b8;
+}
+
+body.dark-mode .buddy-answer {
+    background: #202b45;
+
+    border-left-color: #5d7dff;
+}
+
+body.dark-mode .buddy-avatar {
+    background: #292929;
+}
+
+body.dark-mode .buddy-answer-header small {
+    color: #aaa;
+}
+
+body.dark-mode .question-box textarea {
+    background: #252525;
+
+    color: #eeeeee;
+
+    border-color: #444;
+}
+
+body.dark-mode .question-box textarea::placeholder {
+    color: #999;
+}
+
+body.dark-mode .question-examples > p {
+    color: #aaa;
+}
+
+body.dark-mode .example-list span {
+    background: #292929;
+
+    border-color: #444;
+
+    color: #cfcfcf;
+}
+
+
+/* =========================================================
+   BOOK BUDDY - MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .buddy-page {
+        padding-top: 50px;
+    }
+
+    .buddy-header h1 {
+        font-size: 42px;
+    }
+
+    .chat-box {
+        padding: 25px 20px;
+    }
+
+    .buddy-submit {
+        position: static;
+
+        width: 100%;
+
+        margin-top: 10px;
+    }
+
+    .question-box textarea {
+        padding-bottom: 18px;
+    }
+
+    .example-list {
+        flex-direction: column;
+    }
+
+}
+/* ---------- SETTINGS ---------- */
+
+body.dark-mode .setting-row {
+    border-color: #333;
+}
+
+body.dark-mode .setting-row label,
+body.dark-mode .setting-row p,
+body.dark-mode .setting-row span {
+    color: #eeeeee;
+}
+
+
+/* ---------- FOOTER ---------- */
+
+body.dark-mode footer {
+    color: #999999;
+    border-color: #333;
+}
+
+
+/* ---------- SUCCESS STATE ---------- */
+
+body.dark-mode .book-card:has(.btn-success) {
+    outline-color: rgba(25, 135, 84, 0.35);
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 800px) {
+
+    .site-header {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .site-header nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .feature-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero h1 {
+        font-size: 48px;
+    }
+
+    .page-heading h1 {
+        font-size: 40px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .setting-row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+}
+
+
+/* =========================================================
+   SAVED STATE
+========================================================= */
+
+.favorite-button.is-favorite {
+    border-color: #dc3545;
+    color: #dc3545;
+    background: #fff5f3;
+    font-weight: bold;
+}
+
+.book-card:has(.btn-success) {
+    outline: 3px solid rgba(25, 135, 84, 0.22);
+    outline-offset: 3px;
+}
+/* =========================================================
+   DARK MODE — LOGO & HOME BUTTON
+========================================================= */
+
+body.dark-mode .logo {
+    color: #eeeeee;
+}
+
+/* Find Alternatives button */
+body.dark-mode .hero-buttons .btn,
+body.dark-mode .hero-buttons a {
+    color: #eeeeee;
+}
+
+/* Keep the primary button blue */
+body.dark-mode .hero-buttons .btn-primary {
+    background: #0345fc;
+    border-color: #0345fc;
+    color: white;
+}
+
+/* Secondary / outline button */
+body.dark-mode .hero-buttons .btn-outline-primary,
+body.dark-mode .hero-buttons .btn-secondary {
+    background: transparent;
+    border-color: #5d7dff;
+    color: #eeeeee;
+}
+
+body.dark-mode .hero-buttons .btn-outline-primary:hover,
+body.dark-mode .hero-buttons .btn-secondary:hover {
+    background: #0345fc;
+    border-color: #0345fc;
+    color: white;
+}
+/* =========================================================
+   DARK MODE — THEME SWITCH
+========================================================= */
+
+body.dark-mode .form-check-input {
+    background-color: #444;
+    border-color: #777;
+}
+
+body.dark-mode .form-check-input:checked {
+    background-color: #0345fc;
+    border-color: #0345fc;
+}
+
+body.dark-mode .form-check-input:focus {
+    border-color: #5d7dff;
+    box-shadow: 0 0 0 0.2rem rgba(3, 69, 252, 0.25);
+}

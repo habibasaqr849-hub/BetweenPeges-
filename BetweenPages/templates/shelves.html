@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}My Shelves | Between Pages{% endblock %}
+{% block content %}
+<section class="page-heading"><p class="eyebrow">YOUR LIBRARY</p><h1>Books with somewhere to go.</h1><p>Keep track of what you want to read, what you are reading, and what you have finished.</p></section>
+<section class="shelves">
+    {% set shelf_labels = {'want_to_read': 'Want to Read', 'currently_reading': 'Currently Reading', 'read': 'Read', 'didnt_finish': "Didn't Finish"} %}
+    {% for shelf_key, shelf_label in shelf_labels.items() %}<section class="shelf-section"><h2>{{ shelf_label }}</h2>{% if shelves.get(shelf_key) %}<div class="books-grid">{% for book in shelves[shelf_key] %}<article class="book-card">{% if book.cover %}<img src="{{ book.cover }}" alt="{{ book.title }}">{% else %}<div class="book-placeholder">📖</div>{% endif %}<div class="book-info"><h3>{{ book.title }}</h3><p class="author">{{ book.author }}</p><form action="{{ url_for('shelf') }}" method="post"><input type="hidden" name="title" value="{{ book.title }}"><input type="hidden" name="author" value="{{ book.author }}"><input type="hidden" name="cover" value="{{ book.cover or '' }}"><input type="hidden" name="shelf" value="{{ shelf_key }}"><input type="hidden" name="action" value="remove"><button class="btn btn-sm btn-outline-danger" type="submit">Remove from shelf</button></form></div></article>{% endfor %}</div>{% else %}<p class="empty-state">Nothing here yet. A good shelf can start with one book.</p>{% endif %}</section>{% endfor %}
+</section>
+{% endblock %}

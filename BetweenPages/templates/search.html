@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% block title %}Discover | Between Pages{% endblock %}
+{% block content %}
+<section class="page-heading">
+  <p class="eyebrow">DISCOVER</p>
+  <h1>Find your next read.</h1>
+  <p>Search for something specific or find a similar book.</p>
+</section>
+
+<div class="discover-tabs">
+  <a class="{% if mode == 'search' %}selected{% endif %}" href="{{ url_for('search', mode='search') }}">🔎 Search Books</a>
+  <a class="{% if mode == 'alternative' %}selected{% endif %}" href="{{ url_for('search', mode='alternative') }}">✨ Find Alternatives</a>
+</div>
+
+<section class="discover-box">
+{% if mode == 'alternative' %}
+  <h2>✨ Find Alternatives</h2>
+  <p>Loved a book? Start with the feeling you want to follow next.</p>
+  <form method="get">
+    <input type="hidden" name="mode" value="alternative">
+    <label>Book or novel<input name="q" value="{{ query }}" placeholder="The Secret Garden" required autofocus autocomplete="off"></label>
+    <label>Author <span>(optional)</span><input name="author" value="{{ author }}" placeholder="Frances Hodgson Burnett" autocomplete="off"></label>
+    <label>What did you love? <span>(optional)</span><textarea name="preferences" placeholder="quiet magic, friendship, escape..." autocomplete="off">{{ preferences }}</textarea></label>
+    <button class="btn btn-primary" type="submit">✨ Find My Next Read</button>
+  </form>
+{% else %}
+  <h2>🔎 Search Books &amp; Authors</h2>
+  <p>Find a specific book, novel, or author.</p>
+  <form method="get">
+    <input type="hidden" name="mode" value="search">
+    <label>Search<input name="q" value="{{ query }}" placeholder="Search for a book or author..." required autofocus autocomplete="off"></label>
+    <button class="btn btn-primary" type="submit">🔎 Search</button>
+  </form>
+{% endif %}
+</section>
+
+{% if books %}
+<section class="results" id="results">
+  <h2>{% if mode == 'alternative' %}✨ Books You Might Love{% else %}🔎 Search Results{% endif %}</h2>
+  <div class="books-grid">
+    {% for book in books %}
+    <article class="book-card">
+      {% if book.cover %}<img src="{{ book.cover }}" alt="{{ book.title }}">{% else %}<div class="book-placeholder">📖</div>{% endif %}
+      <div class="book-info">
+        <h3>{{ book.title }}</h3><p class="author">{{ book.author }}</p>
+        <form action="{{ url_for('shelf') }}" method="post">
+          <input type="hidden" name="title" value="{{ book.title }}"><input type="hidden" name="author" value="{{ book.author }}"><input type="hidden" name="cover" value="{{ book.cover or '' }}">
+          <select name="shelf"><option value="">{% if book.saved_on %}Saved on {{ book.saved_on|replace('_', ' ') }}{% else %}Add to shelf...{% endif %}</option><option value="want_to_read">Want to Read</option><option value="currently_reading">Currently Reading</option><option value="read">Read</option><option value="didnt_finish">Didn't Finish</option></select>
+          <button class="btn btn-sm {% if book.saved_on %}btn-success{% else %}btn-outline-primary{% endif %}" type="submit">{% if book.saved_on %}Saved to shelf{% else %}Add to Shelf{% endif %}</button>
+        </form>
+        <form action="{{ url_for('favorite') }}" method="post" class="favorite-form">
+          <input type="hidden" name="title" value="{{ book.title }}"><input type="hidden" name="author" value="{{ book.author }}"><input type="hidden" name="cover" value="{{ book.cover or '' }}">
+          <button type="submit" class="favorite-button {% if book.is_favorite %}is-favorite{% endif %}">{% if book.is_favorite %}♥ Saved Favorite{% else %}♡ Favorite{% endif %}</button>
+        </form>
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+</section>
+{% elif query and mode != 'learn' %}
+<section class="empty-state"><h2>No books found.</h2><p>Try a broader title, author, or feeling.</p></section>
+{% endif %}
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    var savedScroll = sessionStorage.getItem('discoverScrollY');
+    if (savedScroll !== null) {
+        window.scrollTo(0, parseInt(savedScroll, 10));
+        sessionStorage.removeItem('discoverScrollY');
+    }
+
+    document.querySelectorAll('.book-card form').forEach(function (form) {
+        form.addEventListener('submit', function () {
+            sessionStorage.setItem('discoverScrollY', window.scrollY);
+        });
+    });
+});
+</script>
+{% endblock %}
